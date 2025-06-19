@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tenure', function (Blueprint $table) {
+        Schema::create('tenures', function (Blueprint $table) {
             $table->id();
             $table->integer('months')->comment('Number of months for the tenure');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenure');
+        Schema::dropIfExists('tenures');
     }
 };

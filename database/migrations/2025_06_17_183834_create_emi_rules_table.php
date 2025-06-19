@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('min_amount', 10, 2);
             $table->decimal('max_amount', 10, 2);
-            $table->foreignId('tenure_id')->constrained('tenures');
+            $table->foreignId('tenure_id')->constrained('tenures')->onDelete('cascade');
             $table->decimal('interest_rate', 5, 2); // percentage
             $table->timestamps();
         });

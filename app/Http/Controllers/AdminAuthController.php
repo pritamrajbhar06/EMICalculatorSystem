@@ -37,7 +37,7 @@ class AdminAuthController extends Controller
     public function dashboard()
     {
         echo 'Welcome to the admin dashboard!';
-        // return view('admin.dashboard');
+        return view('admin.dashboard');
     }
 
     public function logout()
