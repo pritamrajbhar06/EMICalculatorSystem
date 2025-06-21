@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmiRule;
-use App\Models\Tenure;
 use App\Services\EmiRuleService;
 use App\Services\TenureService;
 use Illuminate\Http\Request;
@@ -37,7 +36,7 @@ class EmiRuleController extends Controller
 
 
         // Checks if the EMI rule already exists
-        $existingRule = $this->emiRuleService->checkEmiRuleExists($request->min_amount, $request->max_amount, $request->tenure_id);
+        $existingRule = $this->emiRuleService->checkAndGetEmiRule($request->min_amount, $request->max_amount, $request->tenure_id);
         if ($existingRule) {
             return redirect()->route('emi-rules.index')->with('message', 'EMI Rule already exists.');
         }
@@ -63,7 +62,7 @@ class EmiRuleController extends Controller
             'tenure_id' => 'required|exists:tenures,id',
         ]);
 
-        $existingRule = $this->emiRuleService->checkEmiRuleExists($request->min_amount, $request->max_amount, $request->tenure_id, $id);
+        $existingRule = $this->emiRuleService->checkAndGetEmiRule($request->min_amount, $request->max_amount, $request->tenure_id, $id);
 
         if ($existingRule) {
             return redirect()->route('emi-rules.index')->with('message', 'Cannot update EMI Rule as it already exists.');

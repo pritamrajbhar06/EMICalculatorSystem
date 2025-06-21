@@ -7,7 +7,7 @@
 <body>
 
 <div class="calculator-container">
-    <h1>Loan EMI Calculator</h1>
+    <h1>Loan EMI Calculator💰 </h1>
 
     @if(session('emi_error'))
         <div class="error-message">

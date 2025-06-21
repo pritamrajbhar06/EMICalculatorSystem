@@ -15,7 +15,7 @@ class EmiRuleService
         return EmiRule::findOrFail($id);
     }
 
-    public function checkEmiRuleExists($minAmount, $maxAmount, $tenureId, $id = null)
+    public function checkAndGetEmiRule($minAmount, $maxAmount, $tenureId, $id = null)
     {
         $query = EmiRule::where('min_amount', '<=', $maxAmount)
             ->where('max_amount', '>=', $minAmount)

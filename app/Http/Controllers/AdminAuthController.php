@@ -20,7 +20,6 @@ class AdminAuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            echo 'Login successful!';
             if (auth()->user()->user_type === 'admin') {
                 return redirect()->route('admin.dashboard');
             }

@@ -34,7 +34,7 @@ class UserController extends Controller
         $amount = $request->amount;
         $tenure_id = $request->tenure_id;
 
-        $emiRule = $this->emiRuleService->checkEmiRuleExists($amount, $amount, $tenure_id);
+        $emiRule = $this->emiRuleService->checkAndGetEmiRule($amount, $amount, $tenure_id);
 
         if (!$emiRule) {
             return redirect()->route('user.dashboard')->with('emi_error', 'No EMI Rule found for this selection.');
