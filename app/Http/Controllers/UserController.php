@@ -2,13 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmiRule;
+use App\Services\EmiRuleService;
+use App\Services\TenureService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $tenureService;
+    protected $emiRuleService;
+    public function __construct(TenureService $tenureService, EmiRuleService $emiRuleService)
+    {
+        $this->tenureService = $tenureService;
+        $this->emiRuleService = $emiRuleService;
+    }
+
     public function dashboard()
     {
-        return view('user.dashboard');
+        return view('user.dashboard')->with([
+            'tenures' => $this->tenureService->getAllTenures(),
+        ]);
     }
 
     public function calculate(Request $request)
@@ -21,20 +34,24 @@ class UserController extends Controller
         $amount = $request->amount;
         $tenure_id = $request->tenure_id;
 
-        $rule = EmiRule::where('min_amount', '<=', $amount)
-                        ->where('max_amount', '>=', $amount)
-                        ->where('tenure_id', $tenure_id)
-                        ->first();
+        $emiRule = $this->emiRuleService->checkEmiRuleExists($amount, $amount, $tenure_id);
 
-        if (!$rule) return back()->withErrors(['No EMI Rule found for this selection.']);
+        if (!$emiRule) {
+            return redirect()->route('user.dashboard')->with('emi_error', 'No EMI Rule found for this selection.');
+        }
 
-        $rate = $rule->interest_rate;
-        $months = $rule->tenure->months;
-        $monthly_interest = ($amount * $rate / 100) / 12;
-        $emi = ($amount / $months) + $monthly_interest;
-        $total_payment = $emi * $months;
 
-        return view('calculator_result', compact('amount', 'months', 'emi', 'total_payment', 'rate'));
+        $ratePerMonth = ($emiRule->interest_rate / 100) / 12;
+        $months = $emiRule->tenure->months;
+
+        $emi = ($amount * $ratePerMonth * pow(1 + $ratePerMonth, $months)) / (pow(1 + $ratePerMonth, $months) - 1);
+        $totalAmount = $emi * $months;
+
+        return back()->with([
+            'emi' => number_format($emi, 2),
+            'total' => number_format($totalAmount, 2),
+        ]);
+
     }
 
     

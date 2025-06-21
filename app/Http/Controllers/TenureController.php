@@ -3,20 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tenure;
+use App\Services\TenureService;
 use Illuminate\Http\Request;
 
 class TenureController extends Controller
 {
+    protected $tenureService;
+    public function __construct(TenureService $tenureService)
+    {
+        $this->tenureService = $tenureService;
+    }
+
     public function index()
     {
         return view('admin.tenure')->with([
-            'tenures' => \App\Models\Tenure::all(),
+            'tenures' => $this->tenureService->getAllTenures(),
         ]);
     }
 
     public function edit($id)
     {
-        $tenure = Tenure::findOrFail($id);
+        $tenure = $this->tenureService->getTenureById($id);
         return view('admin.tenure_edit', compact('tenure'));
     }
 
@@ -26,8 +33,7 @@ class TenureController extends Controller
             'months' => 'required|integer|min:1|unique:tenures,months,' . $id
         ]);
 
-        $tenure = Tenure::findOrFail($id);
-        $tenure->update($request->all());
+        $this->tenureService->updateTenure($id, $request->all());
 
         return redirect()->route('tenures.index')->with('message', 'Tenure updated successfully.');
     }
@@ -38,15 +44,14 @@ class TenureController extends Controller
             'months' => 'required|integer|min:1|unique:tenures,months'
         ]);
 
-        Tenure::create($request->all());
+        $this->tenureService->createTenure($request->all());
 
         return redirect()->route('tenures.index')->with('message', 'Tenure created successfully.');
     }
 
     public function destroy($id)
     {
-        $tenure = Tenure::findOrFail($id);
-        $tenure->delete();
+        $this->tenureService->deleteTenure($id);
 
         return redirect()->route('tenures.index')->with('message', 'Tenure deleted successfully.');
     }
