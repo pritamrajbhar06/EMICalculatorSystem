@@ -1,0 +1,109 @@
+    .tenure-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .form-section {
+        flex: 0 0 350px;
+    }
+
+    .listing-section {
+        flex: 1;
+        overflow-x: auto;
+    }
+
+    .message-box {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 12px 16px;
+        border-left: 5px solid #28a745;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 500px;
+    }
+
+    .form-container-tenure {
+        padding: 30px;
+        background: #1e1e1e;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .form-container-tenure h1 {
+        color: #f0f0f0;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .form-container-tenure label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ccc;
+        font-size: 14px;
+    }
+
+    .form-container-tenure input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        background: #2c2c2c;
+        color: #ddd;
+        border: 1px solid #444;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .form-container-tenure button {
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .form-container-tenure button:hover {
+        background: #0056b3;
+    }
+
+    .error-text {
+        color: #ff5252;
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .listing-section h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .listing-section table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .listing-section thead th {
+        background: #007bff;
+        color: #fff;
+        padding: 10px;
+        border: 1px solid #444;
+    }
+
+    .listing-section tbody td {
+        padding: 10px;
+        border: 1px solid #444;
+    }
+
+    .listing-section table a {
+        margin: 0 5px;
+        text-decoration: none;
+    }
+
+    .listing-section table a:hover {
+        text-decoration: underline;
+    }

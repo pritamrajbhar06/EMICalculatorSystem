@@ -1,55 +1,10 @@
 @extends('layouts.admin')
 
 @section('title', 'Edit Emi Rule')
-
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin/emi_rule-edit.css') }}">
+@endpush
 @section('content')
-<style>
-    .form-container {
-        max-width: 400px;
-        margin: 20px auto;
-        padding: 25px;
-        background: #1e1e1e;
-        border-radius: 8px;
-    }
-
-    .form-container label {
-        display: block;
-        margin-bottom: 8px;
-        color: #eee;
-    }
-
-    .form-container input[type="text"],
-    .form-container select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 16px;
-        border-radius: 4px;
-        border: 1px solid #444;
-        background: #333;
-        color: #ddd;
-    }
-
-    .form-container button {
-        background: #007bff;
-        color: #fff;
-        padding: 12px 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .form-container button:hover {
-        background: #0056b3;
-    }
-
-    .error-message {
-        color: #ff4d4d;
-        font-size: 13px;
-        margin-bottom: 10px;
-        height: 16px;
-    }
-
-</style>
     <h1>Edit EMI Rule</h1>
 
     <div class="form-container">

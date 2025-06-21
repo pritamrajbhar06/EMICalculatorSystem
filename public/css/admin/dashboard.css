@@ -1,0 +1,49 @@
+.dashboard-container {
+    margin: 40px;
+}
+
+.dashboard-container h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.date {
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 250px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card p {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #66b3ff;
+}
+
+.card a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}

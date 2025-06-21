@@ -36,7 +36,10 @@ class AdminAuthController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+       return view('admin.dashboard')->with([
+            'tenuresCount' => \App\Models\Tenure::count(),
+            'emiRulesCount' => \App\Models\EmiRule::count(),
+        ]);
     }
 
     public function logout()
