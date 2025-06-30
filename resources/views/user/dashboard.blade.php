@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Loan EMI Calculator</title>
-    <link rel="stylesheet" href="{{ asset('css/user/dashboard.css') }}">
-</head>
-<body>
+@extends('layouts.user')
 
+@section('title', 'User Dashboard')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/user/dashboard.css') }}">
+@endpush
+
+@section('content')
 <div class="calculator-container">
     <h1>Loan EMI Calculator💰 </h1>
 
@@ -52,5 +53,4 @@
     @endif
 </div>
 
-</body>
-</html>
+@endsection
