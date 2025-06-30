@@ -46,7 +46,7 @@
 <div class="role-container">
     <h1>Who are you?🙋</h1>
     <a href="{{ route('admin.login') }}" class="admin-btn">Admin</a>
-    <a href="{{ route('user.dashboard') }}" class="user-btn">User</a>
+    <a href="{{ route('user.form') }}" class="user-btn">User</a>
 </div>
 
 </body>
