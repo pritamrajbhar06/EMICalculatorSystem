@@ -70,8 +70,8 @@ class UserController extends Controller
 
         $user =  $userService->store($userData);
         Auth::login($user, true); // Log in the user after registration
-
-        return redirect()->route('user.dashboard')->with('message', 'Registration successful. Welcome!');
+        
+        return redirect()->route('subscription.checkout');
     }
 
     public function dashboard()

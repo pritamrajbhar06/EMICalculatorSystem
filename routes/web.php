@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\EmiRuleController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TenureController;
 use App\Http\Controllers\UserController;
 
@@ -40,13 +41,17 @@ Route::middleware('admin')->group(function () {
 Route::get('/user/login', [UserController::class, 'showLoginForm'])->name('user.form');
 Route::post('/user/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/user/register', [UserController::class, 'showRegistrationForm'])->name('user.register');
+Route::post('/user/register', [UserController::class, 'register'])->name('user.register.post');
 
 Route::middleware('user')->group(function () {
-    Route::post('/user/register', [UserController::class, 'register'])->name('user.register.post');
     Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
     Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('/user/dashboard',  [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::post('/calculate', [UserController::class, 'calculate'])->name('user.calculate');
+});
+
+Route::controller(SubscriptionController::class)->group(function () {
+    Route::get('subscription-checkout', 'checkout')->name('subscription.checkout');
 });
 
 
