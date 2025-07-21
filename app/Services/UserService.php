@@ -17,5 +17,10 @@ class UserService
         return User::where('email', $email)->first();
     }
 
+    public function update(int $userId, array $data)
+    {
+        User::where('id', $userId)->update($data);
+    }
+
     
 }

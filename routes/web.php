@@ -45,13 +45,16 @@ Route::post('/user/register', [UserController::class, 'register'])->name('user.r
 
 Route::middleware('user')->group(function () {
     Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
-    Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
-    Route::get('/user/dashboard',  [UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::post('/calculate', [UserController::class, 'calculate'])->name('user.calculate');
+    Route::middleware('subscribed')->group(function () {
+        Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
+        Route::get('/user/dashboard',  [UserController::class, 'dashboard'])->name('user.dashboard');
+        Route::post('/calculate', [UserController::class, 'calculate'])->name('user.calculate');
+    });
 });
 
 Route::controller(SubscriptionController::class)->group(function () {
     Route::get('subscription-checkout', 'checkout')->name('subscription.checkout');
+    Route::get('subscription-success', 'success')->name('subscription.success');
 });
 
 

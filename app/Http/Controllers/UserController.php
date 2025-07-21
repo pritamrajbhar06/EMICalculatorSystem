@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRegistrationStatus;
 use App\Models\EmiRule;
 use App\Services\EmiRuleService;
 use App\Services\TenureService;
@@ -65,7 +66,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'user_type' => 'user', // Set user type to 'user'
+            'user_type' => 'user',
+            'registration_status' => UserRegistrationStatus::UNPAID,
         ];
 
         $user =  $userService->store($userData);

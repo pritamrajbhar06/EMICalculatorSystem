@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49542797eff0644ae7c0af419f6ba6ec",
+    "content-hash": "ab9a0a97c63096f7fe9e315360e0aa13",
     "packages": [
         {
             "name": "brick/math",
@@ -1053,6 +1053,122 @@
                 }
             ],
             "time": "2025-02-03T10:55:03+00:00"
+        },
+        {
+            "name": "henzeb/enumhancer",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/henzeb/enumhancer.git",
+                "reference": "4313af104c31a006b12f1142260866697a9a40d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/henzeb/enumhancer/zipball/4313af104c31a006b12f1142260866697a9a40d7",
+                "reference": "4313af104c31a006b12f1142260866697a9a40d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "composer/composer": "^2.5",
+                "henzeb/enumhancer-ide-helper": "main-dev",
+                "larastan/larastan": "^2.11",
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^v7.18|^8.0|^9",
+                "phpstan/phpstan": "^1.9|^2",
+                "phpunit/phpunit": "^10|^11"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Henzeb\\Enumhancer\\Laravel\\Providers\\EnumhancerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Functions/Functions.php"
+                ],
+                "psr-4": {
+                    "Henzeb\\Enumhancer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Henze Berkheij",
+                    "email": "henzeberkheij@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Your framework-agnostic Swiss Army knife for PHP 8.1+ native enums",
+            "homepage": "https://github.com/henzeb/enumhancer",
+            "keywords": [
+                "8.1",
+                "8.2",
+                "Implicit",
+                "backed",
+                "backedEnum",
+                "basic",
+                "binding",
+                "bitmask",
+                "bitmasks",
+                "blade",
+                "cast",
+                "casting",
+                "comparison",
+                "default",
+                "dropdown",
+                "eloquent",
+                "enum",
+                "enumerator",
+                "enumerators",
+                "enumhancer",
+                "enums",
+                "extract",
+                "extractor",
+                "from",
+                "henzeb",
+                "ide-helper",
+                "labels",
+                "laravel",
+                "list",
+                "logging",
+                "machine",
+                "macroable",
+                "macros",
+                "mappers",
+                "native",
+                "php 8.1",
+                "php 8.2",
+                "properties",
+                "report",
+                "reporting",
+                "rules",
+                "select",
+                "spatie",
+                "state",
+                "string",
+                "stringable",
+                "subset",
+                "transition",
+                "tryFrom",
+                "unit",
+                "unitEnum",
+                "validation",
+                "value"
+            ],
+            "support": {
+                "issues": "https://github.com/henzeb/enumhancer/issues",
+                "source": "https://github.com/henzeb/enumhancer/tree/v3.1.0"
+            },
+            "time": "2025-05-12T10:50:01+00:00"
         },
         {
             "name": "laravel/cashier",

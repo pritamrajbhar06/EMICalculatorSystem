@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'user_type', // 'user' or 'admin'
+        'registration_status', // UserRegistrationStatus enum
     ];
 
     /**

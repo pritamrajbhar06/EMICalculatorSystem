@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserRegistrationStatus;
 use Closure;
 use Illuminate\Http\Request;
+use Stripe\Tax\Registration;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserMiddleware
+class Subscribed
 {
     /**
      * Handle an incoming request.
@@ -15,11 +17,10 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if the user is authenticated and has the 'user' type
-        if (!auth()->check() || auth()->user()->user_type !== 'user') {
-
-            return redirect()->route('user.form')->with('error', 'Unauthorized access.');
+        if (!$request->user() || $request->user()->registration_status == UserRegistrationStatus::UNPAID) {
+            return redirect()->route('subscription.checkout');
         }
+
         return $next($request);
     }
 }
